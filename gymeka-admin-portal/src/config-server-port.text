@@ -1,0 +1,58 @@
+set the PORT for your project if you are on macOS or Linux.
+
+package.json
+
+{
+  "scripts": {
+    "start": "PORT=3456 react-scripts start",
+  },
+}
+
+Windows.
+
+package.json
+
+{
+  "scripts": {
+    "start": "set PORT=3456 && react-scripts start",
+  },
+}
+
+
+/////////////////////////////////////////////////
+
+import React from 'react';
+
+
+function RegisterPage() {
+ 
+
+  return (
+    <div className='bg-gray-300 min-h-screen'>
+     <h1>register</h1>
+    </div>
+  );
+}
+
+export default RegisterPage;
+
+///////////////////////////////////////
+
+
+
+senario: 
+im create admin portal DONE AND INSTALL tailwind done..frist i want show box select admin or manager.
+admin select -> go to home page.manager and admin are one home page.but admin log show  login and 
+regiser button.but manager select go home page show only login button.use style tailwind.
+
+..........................................................................................................................................
+
+frist givr me folder structure.popbox,navbar,app.js,home page,  
+
+ load application user can show popup box. create popup box user go to web frist time show.popup box have drop down menu select admin or manager.
+if seelct admin auto route home page.if manager auto route home page.
+
+second create nav bar.if admin login show navbar register and login button.but manager login show only login button.
+
+3rd create home page.
+4th get app.js.
