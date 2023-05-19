@@ -42,7 +42,7 @@ const Homepage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Card 1 - Admin */}
-            <div className="bg-gradient-to-r from-blue-600 to-violet-600 rounded-md shadow p-6 flex items-center">
+            <div className="bg-gradient-to-r from-blue-600 to-violet-600 rounded-md shadow p-6 flex items-center transform hover:scale-105 transition duration-500 ease-in-out">
               <FaUserCog className="w-8 h-8 mr-3  text-white" />
               <div className=' text-white'>
                 <h3 className="text-lg font-bold mb-2">Admin</h3>
@@ -50,7 +50,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* Card 2 - Manager */}
-            <div className="bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-md shadow p-6 flex items-center">
+            <div className="bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-md shadow p-6 flex items-center transform hover:scale-105 transition duration-500 ease-in-out">
               <FaClipboardList className="w-8 h-8 mr-3 text-white" />
               <div className='text-white'>
                 <h3 className="text-lg font-bold mb-2">Manager</h3>
@@ -58,7 +58,7 @@ const Homepage = () => {
               </div>
             </div>
             {/* Card 3 - Trainer */}
-            <div className="bg-gradient-to-r from-fuchsia-600 to-pink-600 rounded-md shadow p-6 flex items-center">
+            <div className="bg-gradient-to-r from-fuchsia-600 to-pink-600 rounded-md shadow p-6 flex items-center transform hover:scale-105 transition duration-500 ease-in-out">
               <FaDumbbell className="w-8 h-8 mr-3 text-white" />
               <div className='text-white'>
                 <h3 className="text-lg font-bold mb-2">Trainer</h3>
