@@ -11,21 +11,22 @@ const Homepage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen bg-gray-900 ">
         <div className="text-center">
-          <SyncLoader size={10} color="#5305b3" />
-          <p className='bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent text-md mt-2'>Loading...</p>
+          <SyncLoader size={10} color="#00ff9f" />
+          <p className='text-green-400 text-md mt-2'>Loading...</p>
         </div>
       </div>
     );
   }
+
 
   return (
     <div className="flex flex-col min-h-screen">
