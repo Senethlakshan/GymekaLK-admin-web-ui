@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
+import banner from '../../assests/web-banner.jpeg';
+import { FaUserCog, FaClipboardList, FaDumbbell } from 'react-icons/fa';
 
 const Homepage = () => {
-
-
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -27,19 +27,49 @@ const Homepage = () => {
     );
   }
 
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Banner */}
-      <section className="bg-gray-800 text-white py-20 min-h-screen">
-        <div className="container mx-5">
-          <h1 className="text-4xl font-bold mb-4">Welcome to our Gym</h1>
-          <p className="text-lg">Stay fit and healthy with our top-notch facilities</p>
-        </div>
+      <section className="bg-gray-800 text-white ">
+        <img src={banner} alt='web banner' />
       </section>
 
+      {/* Sidebar */}
+      <aside className="bg-gray-900 py-8">
+        <div className="container p-4">
+          <h2 className="text-2xl font-bold mb-4 text-blue-400 bg-blue-600 bg-opacity-50 p-4 rounded-lg">Simplify your tasks with Power Management Tools.</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Card 1 - Admin */}
+            <div className="bg-gradient-to-r from-blue-600 to-violet-600 rounded-md shadow p-6 flex items-center">
+              <FaUserCog className="w-8 h-8 mr-3  text-white" />
+              <div className=' text-white'>
+                <h3 className="text-lg font-bold mb-2">Admin</h3>
+                <p>Access member management, attendance tracking, and billing tools.</p>
+              </div>
+            </div>
+            {/* Card 2 - Manager */}
+            <div className="bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-md shadow p-6 flex items-center">
+              <FaClipboardList className="w-8 h-8 mr-3 text-white" />
+              <div className='text-white'>
+                <h3 className="text-lg font-bold mb-2">Manager</h3>
+                <p>Manage staff, schedule classes, and generate reports.</p>
+              </div>
+            </div>
+            {/* Card 3 - Trainer */}
+            <div className="bg-gradient-to-r from-fuchsia-600 to-pink-600 rounded-md shadow p-6 flex items-center">
+              <FaDumbbell className="w-8 h-8 mr-3 text-white" />
+              <div className='text-white'>
+                <h3 className="text-lg font-bold mb-2">Trainer</h3>
+                <p>View class schedules, track member progress, and communicate with members.</p>
+              </div>
+            </div>
+            {/* Add more cards for other roles */}
+          </div>
+        </div>
+      </aside>
+
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-10">
+      <footer className="bg-gradient-to-r from-slate-900 to-slate-700 text-white py-10">
         <div className="container mx-auto">
           <div className="flex justify-between m-4">
             {/* Help */}
