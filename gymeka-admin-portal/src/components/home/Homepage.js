@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
 import banner from '../../assests/web-banner.jpeg';
-import { FaUserCog, FaClipboardList, FaDumbbell } from 'react-icons/fa';
+import { FaUserCog, FaClipboardList, FaDumbbell, FaUsersCog } from 'react-icons/fa';
 
 const Homepage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,7 +37,9 @@ const Homepage = () => {
       {/* Sidebar */}
       <aside className="bg-gray-900 py-8">
         <div className="container p-4">
-          <h2 className="text-2xl font-bold mb-4 text-blue-400 bg-blue-600 bg-opacity-50 p-4 rounded-lg">Simplify your tasks with Power Management Tools.</h2>
+          <h2 className="text-2xl font-bold mb-4 flex items-center text-blue-400 bg-blue-600 bg-opacity-50 p-4 rounded-lg">
+            <FaUsersCog className='mr-2' /> Simplify your tasks with Power Management Tools.
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Card 1 - Admin */}
             <div className="bg-gradient-to-r from-blue-600 to-violet-600 rounded-md shadow p-6 flex items-center">
