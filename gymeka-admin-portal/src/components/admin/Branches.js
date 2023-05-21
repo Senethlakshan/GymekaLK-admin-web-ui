@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import BranchPopup from './BranchPopup';
 import { FaPlus,FaEdit, FaTrash } from 'react-icons/fa';
 
+//recat tostify
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function BranchesPage() {
   const [branches, setBranches] = useState([]);
@@ -33,7 +38,7 @@ function BranchesPage() {
   };
 
   const handleUpdate = (branch) => {
-    setSelectedBranches([]);
+    setSelectedBranches([branch]);
     setPopupOpen(true);
   };
 
@@ -44,10 +49,12 @@ function BranchesPage() {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success(`Branch deleted successfully.`);
       // Refresh branches list
       fetchBranches();
     } catch (error) {
       console.log(error);
+      toast.error('An error occurred. Please try again.');
     }
   };
 
@@ -63,12 +70,13 @@ function BranchesPage() {
           branchIds,
         },
       });
-
+      toast.success(`All Branches deleted successfully.`);
       // Refresh branches list
       fetchBranches();
       setSelectedBranches([]);
     } catch (error) {
       console.log(error);
+      toast.error('An error occurred. Please try again.');
     }
   };
 
@@ -84,16 +92,26 @@ function BranchesPage() {
   const handlePopupSave = async (branchData) => {
     try {
       if (selectedBranches.length > 0) {
-        // Handle batch update
-        // You can perform batch update logic here if needed
-      } else if (selectedBranches.length === 1) {
         // Update branch
-        const selectedBranch = selectedBranches[0];
-        await axios.put(`http://localhost:8005/api/branches/${selectedBranch._id}`, branchData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        await Promise.all(
+          selectedBranches.map(async (selectedBranch) => {
+            try {
+              await axios.put(
+                `http://localhost:8005/api/branches/${selectedBranch._id}`,
+                branchData,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+              toast.success(`Branch "${selectedBranch.branchCode}" updated successfully.`);
+            } catch (error) {
+              console.log(error);
+              toast.error(`Failed to update branch "${selectedBranch.branchCode}". Please try again.`);
+            }
+          })
+        );
       } else {
         // Add branch
         await axios.post('http://localhost:8005/api/branches', branchData, {
@@ -101,14 +119,61 @@ function BranchesPage() {
             Authorization: `Bearer ${token}`,
           },
         });
+        toast.success(`Branch "${branchData.branchCode}" added successfully.`);
       }
       // Refresh branches list
       fetchBranches();
       setPopupOpen(false);
     } catch (error) {
       console.log(error);
+      toast.error('An error occurred. Please try again.');
     }
   };
+  
+
+
+
+
+
+
+
+
+//testcase**
+  // const handlePopupSave = async (branchData) => {
+  //   try {
+  //     if (selectedBranches.length > 0) {
+  //       // Update branch
+  //       await Promise.all(
+  //         selectedBranches.map((selectedBranch) =>
+  //           axios.put(`http://localhost:8005/api/branches/${selectedBranch._id}`, branchData, {
+  //             headers: {
+  //               Authorization: `Bearer ${token}`,
+  //             },
+  //           })
+            
+  //         )
+          
+  //       );
+  //       toast.success(`Branch "${selectedBranch.branchCode}" updated successfully.`);
+        
+  //     } else {
+  //       // Add branch
+  //       await axios.post('http://localhost:8005/api/branches', branchData, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+  //       toast.success(`Branch "${branchData.branchCode}" added successfully.`);
+  //     }
+  //     // Refresh branches list
+  //     fetchBranches();
+  //     setPopupOpen(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //      toast.error('An error occurred. Please try again.');
+  //   }
+  // };
+  
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -245,6 +310,7 @@ function BranchesPage() {
           onSave={handlePopupSave}
         />
       )}
+       <ToastContainer position='top-right' />
     </div>
   );
 }
