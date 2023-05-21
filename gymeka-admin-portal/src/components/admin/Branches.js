@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import BranchPopup from './BranchPopup';
+import { FaPlus,FaEdit, FaTrash } from 'react-icons/fa';
+
 
 function BranchesPage() {
   const [branches, setBranches] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [branchesPerPage] = useState(10); // Number of branches to display per page
+  const [branchesPerPage] = useState(9); // Number of branches to display per page
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [selectedBranches, setSelectedBranches] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -135,21 +137,21 @@ function BranchesPage() {
 
   return (
     <div className='bg-gray-800 min-h-screen p-2'>
-      <h1 className='text-2xl font-bold text-white mb-4'>All Branches</h1>
+      <h1 className='text-2xl font-bold text-white mb-4 text-center rounded-xl p-2 bg-blue-600'>Branches Management</h1>
       <div className='flex justify-between items-center mb-4'>
         <button
-          className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
+          className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center'
           onClick={handleAddBranch}
         >
-          Add Branch
+         <FaPlus className='mr-2'/>  Add Branch
         </button>
         {selectedBranches.length > 0 && (
-          <button
-            className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
-            onClick={handleDeleteSelected}
-          >
-            Delete Selected
-          </button>
+        <button
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center"
+        onClick={handleDeleteSelected}
+      >
+        <FaTrash className="mr-2" /> Delete Selected branches
+      </button>
         )}
         <div>
           <input
@@ -200,13 +202,13 @@ function BranchesPage() {
                     className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2'
                     onClick={() => handleUpdate(branch)}
                   >
-                    Update
+                    <FaEdit/>
                   </button>
                   <button
                     className='bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded'
                     onClick={() => handleDelete(branch._id)}
                   >
-                    Delete
+                    <FaTrash/>
                   </button>
                 </td>
               </tr>
