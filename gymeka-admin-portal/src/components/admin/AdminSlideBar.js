@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Branches from './Branches';
 import ManagerControl from './ManagerControl';
-import { FaUser, FaDumbbell, FaStoreAlt, FaUserCog, FaUserCircle, FaThList } from 'react-icons/fa';
+import UserPackages from './UserPackages';
+import UserControl from './UserControl';
+import { FaUser, FaDumbbell, FaStoreAlt, FaUserCog, FaUserCircle, FaThList,FaRegStar,FaUserFriends } from 'react-icons/fa';
 
 function AdminSlideBar() {
   const [currentPage, setCurrentPage] = useState('branches');
@@ -21,7 +23,7 @@ function AdminSlideBar() {
         <ul>
           <li
             className={`flex p-4 rounded-full items-center cursor-pointer text-white hover:bg-gray-700 ${
-              currentPage === 'branches' ? 'bg-green-500' : ''
+              currentPage === 'branches' ? 'bg-green-500 hover:bg-green-600' : ''
             }`}
             onClick={() => handlePageChange('branches')}
           >
@@ -30,18 +32,38 @@ function AdminSlideBar() {
           </li>
           <li
             className={`flex p-4 rounded-full items-center cursor-pointer text-white hover:bg-gray-700 ${
-              currentPage === 'managercrtl' ? 'bg-green-500' : ''
+              currentPage === 'managercrtl' ? 'bg-green-500 hover:bg-green-600' : ''
             }`}
             onClick={() => handlePageChange('managercrtl')}
           >
             <FaUserCog className="mr-2" />
-            ManagerControl
+            Managers
+          </li>
+          <li
+            className={`flex p-4 rounded-full items-center cursor-pointer text-white hover:bg-gray-700 ${
+              currentPage === 'userpackages' ? 'bg-green-500 hover:bg-green-600' : ''
+            }`}
+            onClick={() => handlePageChange('userpackages')}
+          >
+            <FaRegStar className="mr-2" />
+            Packages
+          </li>
+          <li
+            className={`flex p-4 rounded-full items-center cursor-pointer text-white hover:bg-gray-700 ${
+              currentPage === 'usercontrol' ? 'bg-green-500 hover:bg-green-600' : ''
+            }`}
+            onClick={() => handlePageChange('usercontrol')}
+          >
+            <FaUserFriends className="mr-2" />
+            Users
           </li>
         </ul>
       </div>
       <div className="flex-1 p-1">
         {currentPage === 'branches' && <Branches />}
         {currentPage === 'managercrtl' && <ManagerControl />}
+        {currentPage === 'userpackages' && <UserPackages />}
+        {currentPage === 'usercontrol' && <UserControl />}
       </div>
     </div>
   );
