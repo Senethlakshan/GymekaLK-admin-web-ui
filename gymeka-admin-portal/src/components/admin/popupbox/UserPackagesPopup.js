@@ -38,7 +38,7 @@ function UserPackagesPopup({ package: initialPackage, onClose, onSave }) {
 
   return (
     <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-gray-800 bg-opacity-50">
-         <div className="p-4 bg-gray-100">
+         <div className="bg-white w-1/2 p-4 rounded-xl">
       <h3 className="text-lg font-semibold mb-4">{initialPackage ? 'Edit Package' : 'Add Package'}</h3>
       <label className="block mb-2">
         Name:
@@ -51,7 +51,7 @@ function UserPackagesPopup({ package: initialPackage, onClose, onSave }) {
         />
       </label>
       <label className="block mb-2">
-        Price:
+        Price (Rs.):
         <input
           type="text"
           name="price"
@@ -69,16 +69,16 @@ function UserPackagesPopup({ package: initialPackage, onClose, onSave }) {
           className="block w-full border border-gray-300 rounded-md p-2 mt-1"
         />
       </label>
-      <div className="flex justify-end mt-4">
+      <div className="flex justify-start mt-4">
         <button
           onClick={handleSave}
-          className="bg-blue-500 text-white py-2 px-4 rounded-md mr-2"
+          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md mr-2"
         >
           Save
         </button>
         <button
           onClick={onClose}
-          className="bg-gray-500 text-white py-2 px-4 rounded-md"
+          className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md"
         >
           Cancel
         </button>

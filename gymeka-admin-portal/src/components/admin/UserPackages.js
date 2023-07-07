@@ -22,7 +22,7 @@ function UserPackages() {
 
   const fetchPackages = async () => {
     try {
-      const response = await axios.get('http://localhost:8005/api/packages', {
+      const response = await axios.get('http://localhost:8009/api/packages', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -40,7 +40,7 @@ function UserPackages() {
 
   const handleDelete = async (packageId) => {
     try {
-      await axios.delete(`http://localhost:8005/api/packages/${packageId}`, {
+      await axios.delete(`http://localhost:8009/api/packages/${packageId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +57,7 @@ function UserPackages() {
     try {
       const packageIds = selectedPackages.map((selectedPackage) => selectedPackage._id);
 
-      await axios.delete('http://localhost:8005/api/packages/deleteAll', {
+      await axios.delete('http://localhost:8009/api/packages/deleteAll', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -91,7 +91,7 @@ function UserPackages() {
           selectedPackages.map(async (selectedPackage) => {
             try {
               await axios.put(
-                `http://localhost:8005/api/packages/${selectedPackage._id}`,
+                `http://localhost:8009/api/packages/${selectedPackage._id}`,
                 packageData,
                 {
                   headers: {
@@ -109,7 +109,7 @@ function UserPackages() {
           })
         );
       } else {
-        await axios.post('http://localhost:8005/api/packages', packageData, {
+        await axios.post('http://localhost:8009/api/packages', packageData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -208,13 +208,13 @@ function UserPackages() {
         <td className="py-2 px-4 border-b border-l border-gray-200">
           <button
             onClick={() => handleUpdate(pkg)}
-            className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none mr-2"
           >
             <FaEdit />
           </button>
           <button
             onClick={() => handleDelete(pkg._id)}
-            className="text-red-500 hover:text-red-700 ml-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none"
           >
             <FaTrash />
           </button>

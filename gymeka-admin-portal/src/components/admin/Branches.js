@@ -201,8 +201,8 @@ function BranchesPage() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='bg-gray-800 min-h-screen p-2'>
-      <h1 className='text-2xl font-bold text-white mb-4 text-center rounded-xl p-2 bg-blue-600'>Branches Management</h1>
+    <div className='bg-white min-h-screen p-2'>
+      <h1 className='text-2xl font-bold text-white mb-4 text-center rounded-xl p-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'>Branches Management</h1>
       <div className='flex justify-between items-center mb-4'>
         <button
           className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center'
@@ -221,7 +221,7 @@ function BranchesPage() {
         <div>
           <input
             type='text'
-            className='bg-gray-900 text-white py-2 px-4 rounded'
+            className='bg-gray-100 text-gray-500 py-2 px-4 rounded '
             placeholder='Search by branch code...'
             value={searchTerm}
             onChange={handleSearch}
@@ -232,7 +232,7 @@ function BranchesPage() {
         <div className='text-white mb-4'>No branches found.</div>
       )}
       {filteredBranches.length > 0 && (
-        <table className='w-full bg-gray-900 text-white'>
+        <table className='w-full bg-white text-black'>
           <thead>
             <tr>
               <th className='py-2 px-4'></th>
@@ -248,7 +248,7 @@ function BranchesPage() {
             {currentBranches.map((branch) => (
               <tr
                 key={branch._id}
-                className={`hover:bg-gray-700 ${selectedBranches.includes(branch) ? 'bg-gray-700' : ''}`}
+                className={`hover:bg-gray-100 ${selectedBranches.includes(branch) ? 'bg-gray-100' : ''}`}
               >
                 <td className='py-2 px-4 border'>
                   <input
