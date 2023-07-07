@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assests/loadImg.png';
-import { FaSignInAlt, FaUserShield } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import axios from 'axios';
 
 const Navbar = () => {
@@ -58,9 +58,10 @@ const Navbar = () => {
                                     </Link>
                                 )}
                                 <button
-                                    className='bg-gradient-to-r from-rose-700 to-pink-600 text-white px-3 py-2 mr-3 rounded-md text-sm font-semibold hover:from-pink-600 hover:to-pink-700'
+                                    className='bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white px-3 py-2 mr-3 rounded-md text-sm font-semibold'
                                     onClick={handleLogout}
                                 >
+                                      <FaSignOutAlt className="inline mr-1" />
                                     Logout
                                 </button>
                             </>
@@ -85,4 +86,3 @@ const Navbar = () => {
 export default Navbar;
 
 
-//update
